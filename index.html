@@ -148,7 +148,6 @@
       border-color: rgba(255, 255, 255, 0.3);
     }
 
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -169,7 +168,6 @@
       pointer-events: none;
     }
 
-    /* Hero badge */
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -196,18 +194,10 @@
     }
 
     @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: 0.2
-      }
+      0%, 100% { opacity: 1 }
+      50% { opacity: 0.2 }
     }
 
-    /* Hero layout: left col = titles, right col = desc+btns */
     .hero-inner {
       display: grid;
       grid-template-columns: 1fr 280px;
@@ -289,7 +279,6 @@
       flex-shrink: 0;
     }
 
-    /* Right col */
     .hero-right {
       display: flex;
       flex-direction: column;
@@ -342,15 +331,8 @@
     }
 
     @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 0.4
-      }
-
-      50% {
-        opacity: 1
-      }
+      0%, 100% { opacity: 0.4 }
+      50% { opacity: 1 }
     }
 
     .scroll-lbl {
@@ -366,7 +348,6 @@
         opacity: 0;
         transform: translateY(20px)
       }
-
       to {
         opacity: 1;
         transform: translateY(0)
@@ -471,7 +452,6 @@
       font-weight: 300;
     }
 
-    /* FEATURES */
     .features-section {
       padding: 120px 48px;
     }
@@ -583,7 +563,6 @@
       font-weight: 300;
     }
 
-    /* PRICING */
     .pricing-section {
       padding: 120px 48px;
       text-align: center;
@@ -647,14 +626,12 @@
       height: 18px;
       border: 1px solid var(--border2);
       border-radius: 50%;
-      display: grid;
-      place-items: center;
+      display: grid; place-items: center;
       font-size: 9px;
       color: var(--white);
       flex-shrink: 0;
     }
 
-    /* FAQ */
     .faq-section {
       padding: 120px 48px;
     }
@@ -697,7 +674,6 @@
       font-family: var(--body-font);
     }
 
-    /* CTA */
     .cta-section {
       padding: 160px 48px;
       text-align: center;
@@ -800,10 +776,11 @@
       font-family: var(--body-font);
     }
 
+    /* REVEAL ANIMATIONS */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(24px);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .reveal.visible {
@@ -811,73 +788,28 @@
       transform: translateY(0);
     }
 
-    @media(max-width:900px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .hero-right {
-        align-items: flex-start;
-      }
-
-      .hero-actions {
-        flex-direction: row;
-      }
-    }
-
-    @media(max-width:768px) {
-      nav {
-        padding: 0 24px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .features-section,
-      .pricing-section,
-      .faq-section,
-      .cta-section {
-        padding: 80px 24px;
-      }
-
-      .features-grid,
-      .faq-grid,
-      .price-feats {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-      }
-
-      .stat-item {
-        border-right: none;
-        padding: 0;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-      }
-
-      .divider {
-        margin: 0 24px;
-      }
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-eyebrow::before { display: none; }
+      .hero-right { align-items: center; text-align: center; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 0; }
+      .stat-item { border-right: none; }
+      .features-grid, .faq-grid { grid-template-columns: 1fr; }
+      .price-feats { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 48px 24px; }
     }
   </style>
 </head>
 
 <body>
-
   <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
 
   <nav>
-    <div class="nav-logo">Vega</div>
+    <div class="nav-logo">VEGA</div>
     <ul class="nav-links">
       <li><a href="#features">Функции</a></li>
       <li><a href="#pricing">Цена</a></li>
@@ -887,16 +819,15 @@
     <a href="#pricing" class="nav-cta">Скачать</a>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-badge">
-      <div class="badge-dot"></div>
+      <span class="badge-dot"></span>
       Minecraft 1.21.4 · Fabric
     </div>
 
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-eyebrow">Модификация</div>
+        <span class="hero-eyebrow">Модификация</span>
         <span class="hero-title-big">Vega</span>
         <div class="hero-title-row">
           <span class="hero-title-raises">beyond</span>
@@ -905,9 +836,11 @@
         </div>
       </div>
       <div class="hero-right">
-        <div class="hero-ver">v3.0.14 · Fabric API</div>
-        <p class="hero-desc">Современная модификация для Minecraft с эффектными визуалами, плавной производительностью и
-          стильным интерфейсом.</p>
+        <span class="hero-ver">v3.0.14 · Fabric API</span>
+        <p class="hero-desc">
+          Современная модификация для Minecraft с эффектными визуалами, плавной производительностью и
+          стильным интерфейсом.
+        </p>
         <div class="hero-actions">
           <a href="#pricing" class="btn-primary">↓ Скачать лаунчер</a>
           <a href="#features" class="btn-ghost">Узнать больше</a>
@@ -917,147 +850,143 @@
 
     <div class="hero-scroll">
       <div class="scroll-line"></div>
-      <div class="scroll-lbl">Scroll</div>
+      <span class="scroll-lbl">Scroll</span>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- FEATURES -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num" id="fps-num">0</div>
+        <div class="stat-lbl">FPS Boost</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">120+</div>
+        <div class="stat-lbl">Модулей</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">0ms</div>
+        <div class="stat-lbl">Input Lag</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">24/7</div>
+        <div class="stat-lbl">Поддержка</div>
+      </div>
+    </div>
+  </section>
+
   <section class="features-section" id="features">
     <div class="sec-header reveal">
-      <div class="sec-label">Возможности</div>
-      <h2 class="sec-title">Всё что нужно —<br><em>внутри</em></h2>
-      <p class="sec-desc">Никакого лишнего. Только то, что делает игру лучше — быстрее, красивее, удобнее.</p>
+      <span class="sec-label">Возможности</span>
+      <h2 class="sec-title">Всё что нужно — <em>внутри</em></h2>
+      <p class="sec-desc">
+        Никакого лишнего. Только то, что делает игру лучше — быстрее, красивее, удобнее.
+      </p>
     </div>
-    <div class="features-grid reveal">
-      <div class="feat-card">
+
+    <div class="features-grid">
+      <div class="feat-card reveal">
         <div class="feat-ico">⚡</div>
-        <div class="feat-title">Производительность</div>
-        <p class="feat-desc">Умный менеджер ресурсов и тонкая оптимизация для максимально плавной и стабильной игры без
-          лагов и фризов.</p>
+        <h3 class="feat-title">Производительность</h3>
+        <p class="feat-desc">Умный менеджер ресурсов и тонкая оптимизация для максимально плавной и стабильной игры без лагов и фризов.</p>
       </div>
-      <div class="feat-card">
+      <div class="feat-card reveal">
         <div class="feat-ico">◈</div>
-        <div class="feat-title">HUD элементы</div>
-        <p class="feat-desc">Эстетичный и полностью настраиваемый интерфейс с аккуратным отображением всей важной
-          игровой информации.</p>
+        <h3 class="feat-title">HUD элементы</h3>
+        <p class="feat-desc">Эстетичный и полностью настраиваемый интерфейс с аккуратным отображением всей важной игровой информации.</p>
       </div>
-      <div class="feat-card">
+      <div class="feat-card reveal">
         <div class="feat-ico">◻</div>
-        <div class="feat-title">Система модулей</div>
-        <p class="feat-desc">Интегрированная система модулей с расширенной настройкой — полный контроль над
-          функциональностью под твой стиль игры.</p>
+        <h3 class="feat-title">Система модулей</h3>
+        <p class="feat-desc">Интегрированная система модулей с расширенной настройкой — полный контроль над функциональностью под твой стиль игры.</p>
       </div>
-      <div class="feat-card">
+      <div class="feat-card reveal">
         <div class="feat-ico">▤</div>
-        <div class="feat-title">Категории</div>
-        <p class="feat-desc">Логично организованные разделы модулей для быстрой навигации и комфортного доступа ко всем
-          возможностям.</p>
+        <h3 class="feat-title">Категории</h3>
+        <p class="feat-desc">Логично организованные разделы модулей для быстрой навигации и комфортного доступа ко всем возможностям.</p>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- PRICING -->
   <section class="pricing-section" id="pricing">
-    <div class="reveal">
-      <div class="sec-label">Доступность</div>
-      <h2 class="sec-title">Просто скачай.<br><em>Бесплатно.</em></h2>
-      <p class="sec-desc" style="margin:0 auto">Никаких подписок, никаких пейволов. Vega — это мод, а не сервис.</p>
+    <div class="sec-header reveal">
+      <span class="sec-label">Доступность</span>
+      <h2 class="sec-title">Просто скачай. <em>Бесплатно.</em></h2>
+      <p class="sec-desc">
+        Никаких подписок, никаких пейволов. Vega — это мод, а не сервис.
+      </p>
     </div>
-    <div class="price-num reveal"><sup>цена</sup> 0 ₽</div>
-    <p class="price-sub reveal">Навсегда · Все модули включены</p>
-    <div class="price-feats reveal">
-      <div class="pf">
-        <div class="pf-chk">✓</div>Оптимизированная производительность
-      </div>
-      <div class="pf">
-        <div class="pf-chk">✓</div>Регулярные обновления
-      </div>
-      <div class="pf">
-        <div class="pf-chk">✓</div>Полная поддержка 1.21.4 Fabric
-      </div>
-      <div class="pf">
-        <div class="pf-chk">✓</div>Современный дизайн интерфейса
-      </div>
-      <div class="pf">
-        <div class="pf-chk">✓</div>Удобная структура модулей
-      </div>
-      <div class="pf">
-        <div class="pf-chk">✓</div>Гибкие настройки под себя
-      </div>
-    </div>
+
     <div class="reveal">
-      <a href="https://drive.google.com/uc?export=download&id=1cGMi5WCbauNsuupfiv3cGBnxcCmJlIaf"
-        class="btn-primary">Скачать лаунчер</a>
+      <div class="price-num"><sup>^цена^</sup> 0 ₽</div>
+      <div class="price-sub">Навсегда · Все модули включены</div>
+
+      <div class="price-feats">
+        <div class="pf"><div class="pf-chk">✓</div>Оптимизированная производительность</div>
+        <div class="pf"><div class="pf-chk">✓</div>Регулярные обновления</div>
+        <div class="pf"><div class="pf-chk">✓</div>Полная поддержка 1.21.4 Fabric</div>
+        <div class="pf"><div class="pf-chk">✓</div>Современный дизайн интерфейса</div>
+        <div class="pf"><div class="pf-chk">✓</div>Удобная структура модулей</div>
+        <div class="pf"><div class="pf-chk">✓</div>Гибкие настройки под себя</div>
+      </div>
+
+      <a href="https://drive.google.com/uc?export=download&id=1cGMi5WCbauNsuupfiv3cGBnxcCmJlIaf" class="btn-primary" style="padding: 18px 48px;">Скачать лаунчер</a>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- FAQ -->
   <section class="faq-section" id="faq">
     <div class="sec-header reveal">
-      <div class="sec-label">FAQ</div>
-      <h2 class="sec-title">Есть вопросы?<br><em>Ловите ответы.</em></h2>
-      <p class="sec-desc">Собрали всё что спрашивают чаще всего — чтобы ты мог начать играть без лишних заморочек.</p>
+      <span class="sec-label">FAQ</span>
+      <h2 class="sec-title">Есть вопросы? <em>Ловите ответы.</em></h2>
+      <p class="sec-desc">
+        Собрали всё что спрашивают чаще всего — чтобы ты мог начать играть без лишних заморочек.
+      </p>
     </div>
-    <div class="faq-grid reveal">
-      <div class="faq-item">
-        <div class="faq-q">Как установить Vega?</div>
-        <p class="faq-a">Скачай лаунчер по кнопке выше, запусти его, введи никнейм и нажми «Играть». Всё остальное
-          лаунчер сделает автоматически.</p>
+
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Как установить Vega?</h3>
+        <p class="faq-a">Скачай лаунчер по кнопке выше, запусти его, введи никнейм и нажми «Играть». Всё остальное лаунчер сделает автоматически.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Нужна ли лицензия Minecraft?</div>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Нужна ли лицензия Minecraft?</h3>
         <p class="faq-a">Для игры лицензия не требуется, скачиваете лаунчер и играете.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Как проверить обновления?</div>
-        <p class="faq-a">Все обновления применяются автоматически при следующем запуске лаунчера. Никаких ручных
-          действий не нужно.</p>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Как проверить обновления?</h3>
+        <p class="faq-a">Все обновления применяются автоматически при следующем запуске лаунчера. Никаких ручных действий не нужно.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Какая версия Java нужна?</div>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Какая версия Java нужна?</h3>
         <p class="faq-a">Необходима Java 21. Скачай Temurin 21 с adoptium.net и установи с галочкой «Add to PATH».</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Лаунчер не запускается. Что делать?</div>
-        <p class="faq-a">Убедись что Java 21 установлена и запусти от имени администратора. При проблемах обратись в
-          поддержку.</p>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Лаунчер не запускается. Что делать?</h3>
+        <p class="faq-a">Убедись что Java 21 установлена и запусти от имени администратора. При проблемах обратись в поддержку.</p>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Где получить помощь?</div>
+      <div class="faq-item reveal">
+        <h3 class="faq-q">Где получить помощь?</h3>
         <p class="faq-a">Свяжись через Telegram или Discord — команда оперативно ответит на любые вопросы.</p>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- CTA -->
   <section class="cta-section" id="contact">
     <div class="reveal">
-      <h2 class="cta-title">Нужна<br><em>помощь?</em></h2>
+      <h2 class="cta-title">Нужна <em>помощь?</em></h2>
       <p class="cta-desc">Мгновенный доступ к отзывчивой команде поддержки<br>через Telegram и Discord.</p>
+      
       <div class="cta-btns">
-        <a href="#" class="cta-btn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z" />
-          </svg>
+        <a href="https://t.me/entity0x1" target="_blank" class="cta-btn">
           Telegram
         </a>
-        <a href="#" class="cta-btn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.015.04.03.052a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
-          </svg>
-          Discord
+        <a href="#" onclick="navigator.clipboard.writeText('cupppka'); alert('Ник Discord (cupppka) скопирован!'); return false;" class="cta-btn">
+          Discord: cupppka
         </a>
       </div>
+      
       <div class="cta-domain">vega-client.ru</div>
     </div>
   </section>
@@ -1068,18 +997,37 @@
   </footer>
 
   <script>
-    // Custom cursor
     const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-    (function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); })();
-    document.querySelectorAll('a,button').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.width = '14px'; cursor.style.height = '14px'; ring.style.width = '48px'; ring.style.height = '48px'; });
-      el.addEventListener('mouseleave', () => { cursor.style.width = '8px'; cursor.style.height = '8px'; ring.style.width = '32px'; ring.style.height = '32px'; });
+    const ring = document.getElementById('cursor-ring');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
     });
 
-    // Feature card glow
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button, .feat-card, .faq-item').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '12px'; cursor.style.height = '12px';
+        ring.style.width = '50px'; ring.style.height = '50px';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '8px'; cursor.style.height = '8px';
+        ring.style.width = '32px'; ring.style.height = '32px';
+      });
+    });
+
     document.querySelectorAll('.feat-card').forEach(card => {
       card.addEventListener('mousemove', e => {
         const r = card.getBoundingClientRect();
@@ -1088,26 +1036,30 @@
       });
     });
 
-    // Scroll reveal
     const obs = new IntersectionObserver(entries => {
-      entries.forEach((e, i) => { if (e.isIntersecting) { e.target.style.transitionDelay = (i * 0.06) + 's'; e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      entries.forEach((e, i) => { 
+        if (e.isIntersecting) { 
+          e.target.style.transitionDelay = (i * 0.06) + 's'; 
+          e.target.classList.add('visible'); 
+          obs.unobserve(e.target); 
+        } 
+      });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // FPS counter animation
     const fpsEl = document.getElementById('fps-num');
     const fpsObs = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
         let start = 0, t0 = performance.now();
         (function tick(now) {
-          const p = Math.min((now - t0) / 1400, 1), e = 1 - Math.pow(1 - p, 3);
-          fpsEl.textContent = Math.round(e * 60) + '+';
+          const p = Math.min((now - t0) / 1400, 1), e = 1 - Math.pow(1 - p, 4);
+          fpsEl.textContent = Math.floor(e * 340);
           if (p < 1) requestAnimationFrame(tick);
         })(t0);
-        fpsObs.disconnect();
+        fpsObs.unobserve(entries[0].target);
       }
-    }, { threshold: 0.5 });
-    fpsObs.observe(document.querySelector('.stats'));
+    });
+    fpsObs.observe(fpsEl);
   </script>
 </body>
 
